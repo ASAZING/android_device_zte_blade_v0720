@@ -2,10 +2,11 @@ USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
 -include vendor/zte/blade_v0720/BoardConfigVendor.mk
+LOCAL_PATH := device/zte/blade_v0720
 
 TARGET_ARCH := arm
 TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := unknown
+TARGET_BOARD_PLATFORM := mt6735m
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -18,6 +19,11 @@ TARGET_BOOTLOADER_BOARD_NAME := blade_v0720
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_PAGESIZE := 2048
+TARGET_KERNEL_SOURCE := kernel/zte/mt6735m
+TARGET_KERNEL_CONFIG := ztexa6735m_35gu_m_defconfig
+
+# Recovery
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 
 # fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00380000
@@ -26,6 +32,5 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x08c60000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/zte/blade_v0720/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true

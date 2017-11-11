@@ -6,10 +6,10 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product-if-exists, vendor/zte/blade_v0720/blade_v0720-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/zte/blade_v0720/overlay
-
+LOCAL_PATH := zte/blade_v0720/
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/zte/blade_v0720/kernel
+	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
